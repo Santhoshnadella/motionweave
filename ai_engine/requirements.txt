@@ -1,0 +1,14 @@
+diffusers>=0.24.0
+transformers
+accelerate
+opencv-python
+mediapipe
+controlnet_aux
+scikit-image
+einops
+omegaconf
+open_clip_torch
+pytorch-lightning
+basicsr
+facexlib
+gfpgan

@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # --- AI ENGINE & API (GPU) ---
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: motion_weave_api
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist models so we don't redownload every restart
+      - ./models_cache:/app/models
+      # Persist outputs
+      - ./backend/outputs:/app/backend/outputs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - HF_HOME=/app/models/huggingface
+
+  # --- WEB STUDIO (Frontend) ---
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: motion_weave_web
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - api
+  # --- JOB QUEUE (Redis) ---
+  # Only needed if we move to Celery/Redis architecture
+  # redis:
+  #   image: redis:alpine
+  #   ports:
+  #     - "6379:6379"
+
+volumes:
+  models_cache:

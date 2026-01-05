@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-multipart
+redis
+celery
+torch --index-url https://download.pytorch.org/whl/cu118
+diffusers==0.24.0
+transformers
+accelerate
+opencv-python
+numpy
+Pillow
+ffmpeg-python
