@@ -105,4 +105,4 @@ This project is designed to be **Production Ready Scaffolding**.
 
 ---
 
-**Built with 🤖 and ❤️ by Santhosh Nadella.**
+**Built with  ❤️ by Santhosh Nadella.**
