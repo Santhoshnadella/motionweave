@@ -5,7 +5,7 @@
 ![Digital Puppeteer](docs/images/digital_puppeteer.png)
 
 ![Motion Weave Banner](docs/images/system_arch.png)
-*(Replace with actual banner if available)*
+
 
 ## 🚀 Overview
 Motion Weave is a plug-and-play **Character Replacement Engine**. It allows you to take a static image of a character and animate it using the motion from a reference video. Think of it as a "Digital Puppeteer": the reference video provides the strings, and the AI diffusion model pulls them to make your static character dance, walk, or act.
@@ -41,26 +41,7 @@ Imagine a painter (The AI) who is looking at a blurred canvas (Noise).
 3.  **The Process**: The painter starts clearing the fog. As they paint, they are forced to put "Alice's" colors only where the "Stick Figure" lines are.
 4.  **The Result**: Alice is now dancing exactly like the stick figure.
 
-### System Architecture
-```mermaid
-graph TD
-    User[User Input] -->|Ref Image + Driver Video| API[FastAPI Backend]
-    API -->|Async Job| Queue[Job Manager]
-    Queue -->|Process| Engine[AI Engine (GPU)]
-    
-    subgraph "AI Engine Pipeline"
-        direction TB
-        Video[Driver Video] -->|OpenCV| DWPose[DWPose Estimator]
-        DWPose -->|Skeleton Tensor| SVD[MimicMotion / SVD]
-        Ref[Char Image] -->|CLIP Encode| SVD
-        
-        SVD -->|Latents| VAE[VAE Decoder]
-        VAE -->|Raw Frames| Stitch[Smart Stitcher]
-        Stitch -->|Refine| GFPGAN[Face Enhancer]
-    end
-    
-    GFPGAN -->|MP4| Storage[Output Folder]
-```
+
 
 ### Technical Stack
 *   **AI Core**: PyTorch 2.1, Diffusers (HuggingFace), MimicMotion checkponts.
