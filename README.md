@@ -2,7 +2,9 @@
 
 **Automated Neural Human Animation Engine**
 
-![Motion Weave Banner](https://via.placeholder.com/1200x400.png?text=Motion+Weave+Architecture)
+![Digital Puppeteer](docs/images/digital_puppeteer.png)
+
+![Motion Weave Banner](docs/images/system_arch.png)
 *(Replace with actual banner if available)*
 
 ## 🚀 Overview
@@ -32,6 +34,7 @@ While the research repos are complex "spaghetti code" meant for papers, **Motion
 ## ⚙️ How It Works (The Technical Deep Dive)
 
 ### The Analogy: "The Ghost Painter"
+![Ghost Painter](docs/images/ghost_painter.png)
 Imagine a painter (The AI) who is looking at a blurred canvas (Noise).
 1.  **The Reference**: You show them a photo of "Alice". They memorize her face (**ReferenceNet**).
 2.  **The Skeleton**: You show them a stick-figure video of a dance (**ControlNet**).
@@ -121,4 +124,4 @@ This project is designed to be **Production Ready Scaffolding**.
 
 ---
 
-**Built with 🤖 and ❤️.**
+**Built with 🤖 and ❤️ by Santhosh Nadella.**
